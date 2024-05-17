@@ -6,7 +6,7 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 17:43:00 by chunpark          #+#    #+#             */
-/*   Updated: 2024/05/17 17:03:09 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/05/17 20:07:53 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	process_stack(t_stack *a, char **argv)
 	int	*arr;
 
 	insert(a, argv);
-	is_sorted(a, a->size);
+	if (is_sorted(a, a->size) == 1)
+		exit(1);
 	arr = preprecess_stack(a, a->size);
 	merge_sort(arr, 0, a->size - 1);
 	indexing_node(a, arr);

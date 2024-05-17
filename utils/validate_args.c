@@ -6,7 +6,7 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 18:16:30 by chunpark          #+#    #+#             */
-/*   Updated: 2024/05/17 19:35:39 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/05/17 20:02:18 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,5 @@ int	is_sorted(t_stack *stack, int size)
 		tmp = tmp->next;
 		i++;
 	}
-	exit(1);
 	return (1);
 }

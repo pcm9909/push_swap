@@ -6,7 +6,7 @@
 #    By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/17 19:09:54 by chunpark          #+#    #+#              #
-#    Updated: 2024/05/17 19:34:36 by chunpark         ###   ########.fr        #
+#    Updated: 2024/05/17 20:27:22 by chunpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,28 +44,31 @@ CHECKER_OBJS = $(BNS_OBJS) $(UTILS_OBJS) $(FUNC_OBJS)
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-all: $(NAME)
+all: spinner $(NAME)
 
 $(NAME): $(PUSH_SWAP_OBJS)
-	@make re -C ./utils/utils/libft
+	@make re -C ./utils/utils/libft > /dev/null
 	@$(CC) $(CFLAGS) $(PUSH_SWAP_OBJS) $(LIBFT) -o $(NAME)
 bonus: $(BNS_NAME)
 
 $(BNS_NAME): $(CHECKER_OBJS)
-	make re -C ./utils/utils/libft
-	make re -C ./utils/utils/get_next_line
+	@make re -C ./utils/utils/libft > /dev/null
+	@make re -C ./utils/utils/get_next_line > /dev/null
 	@$(CC) $(CFLAGS) $(CHECKER_OBJS) $(LIBFT) $(GNL) -o $(BNS_NAME)
 
 clean:
-	@make clean -C ./utils/utils/libft
-	@make clean -C ./utils/utils/get_next_line
+	@make clean -C ./utils/utils/libft > /dev/null
+	@make clean -C ./utils/utils/get_next_line > /dev/null
 	@rm -f $(PUSH_SWAP_OBJS) $(CHECKER_OBJS)
 
 fclean: clean
-	@make fclean -C ./utils/utils/libft
-	@make fclean -C ./utils/utils/get_next_line
+	@make fclean -C ./utils/utils/libft > /dev/null
+	@make fclean -C ./utils/utils/get_next_line > /dev/null
 	@rm -f $(NAME) $(BNS_NAME)
 
 re: fclean all
 
 re_bonus: fclean bonus
+
+spinner :
+	@bash a.sh
