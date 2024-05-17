@@ -1,14 +1,26 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/05/17 19:09:54 by chunpark          #+#    #+#              #
+#    Updated: 2024/05/17 19:34:36 by chunpark         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 NAME = push_swap
-DIR = ./push_swap
-SRC = index_node.c sort_arr.c sort_stack.c sort_stack_3_5.c push_swap.c
+DIR = ./man
+SRC = push_swap.c index_node.c sort_arr.c sort_stack.c sort_stack_3_5.c
 SRCS = $(addprefix $(DIR)/, $(SRC))
 OBJS = $(SRCS:.c=.o)
 
 BNS_NAME = checker
-BNS_DIR = ./checker
+BNS_DIR = ./bonus
 BNS_SRC = process_input.c checker.c
 BNS_SRCS = $(addprefix $(BNS_DIR)/, $(BNS_SRC))
 BNS_OBJS = $(BNS_SRCS:.c=.o)
@@ -23,36 +35,37 @@ FUNC_SRC = push.c reverse_rotate.c rotate.c swap.c
 FUNC_SRCS = $(addprefix $(FUNC_DIR)/, $(FUNC_SRC))
 FUNC_OBJS = $(FUNC_SRCS:.c=.o)
 
+LIBFT = ./utils/utils/libft/libft.a
+GNL = ./utils/utils/get_next_line/get_next_line.a
+
+PUSH_SWAP_OBJS = $(OBJS) $(UTILS_OBJS) $(FUNC_OBJS)
+CHECKER_OBJS = $(BNS_OBJS) $(UTILS_OBJS) $(FUNC_OBJS)
 
 %.o: %.c
-			@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
+all: $(NAME)
 
-all : $(NAME)
-
-$(NAME): $(OBJS)
+$(NAME): $(PUSH_SWAP_OBJS)
 	@make re -C ./utils/utils/libft
-	@$(CC) $(CFLAGS) $(OBJS) $(UTILS_OBJS) $(FUNC_OBJS) ./utils/utils/libft/libft.a
+	@$(CC) $(CFLAGS) $(PUSH_SWAP_OBJS) $(LIBFT) -o $(NAME)
+bonus: $(BNS_NAME)
 
-bonus : $(BNS_NAME)
-
-$(BNS_NAME):
-	@make re -C ./utils/utils/libft
-	@make re -C ./utils/utils/get_next_line
-	@$(CC) $(CFLAGS) $(BNS_OBJS) $(UTILS_OBJS) $(FUNC_OBJS) ./utils/utils/libft/libft.a ./utils/utils/get_next_line/get_next_line.a
+$(BNS_NAME): $(CHECKER_OBJS)
+	make re -C ./utils/utils/libft
+	make re -C ./utils/utils/get_next_line
+	@$(CC) $(CFLAGS) $(CHECKER_OBJS) $(LIBFT) $(GNL) -o $(BNS_NAME)
 
 clean:
 	@make clean -C ./utils/utils/libft
 	@make clean -C ./utils/utils/get_next_line
-	@rm -f $(OBJS) $(BNS_OBJS) $(UTILS_OBJS)
+	@rm -f $(PUSH_SWAP_OBJS) $(CHECKER_OBJS)
 
 fclean: clean
-	@make clean -C ./utils/utils/libft
-	@make clean -C ./utils/utils/get_next_line
+	@make fclean -C ./utils/utils/libft
+	@make fclean -C ./utils/utils/get_next_line
 	@rm -f $(NAME) $(BNS_NAME)
 
 re: fclean all
 
 re_bonus: fclean bonus
-
-

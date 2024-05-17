@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_input.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chunpark <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 15:11:17 by chunpark          #+#    #+#             */
-/*   Updated: 2024/05/17 15:11:20 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/05/17 19:28:51 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ void	process_command(t_stack *a, t_stack *b, int size)
 				ft_putstr_fd("OK\n", 1);
 			else
 				ft_putstr_fd("KO\n", 1);
-			return ;
+			free(str);
+			exit(1);
 		}
 		execute_command_1(str, a, b);
 		free(str);

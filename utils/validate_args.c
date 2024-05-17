@@ -6,7 +6,7 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 18:16:30 by chunpark          #+#    #+#             */
-/*   Updated: 2024/05/17 04:49:40 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/05/17 19:35:39 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ int	is_sorted(t_stack *stack, int size)
 
 	tmp = stack->head;
 	i = 0;
+	if (size != stack->size)
+		return (0);
 	while (i < size - 1)
 	{
 		if (tmp->data < tmp->next->data)
@@ -81,5 +83,6 @@ int	is_sorted(t_stack *stack, int size)
 		tmp = tmp->next;
 		i++;
 	}
+	exit(1);
 	return (1);
 }

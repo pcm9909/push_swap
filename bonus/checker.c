@@ -6,7 +6,7 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 20:28:04 by chunpark          #+#    #+#             */
-/*   Updated: 2024/05/17 04:44:20 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/05/17 19:24:43 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	main(int argc, char **argv)
 	int		size;
 
 	if (argc < 2)
-		exit_with_err();
+		exit(1);
 	i = update_args(&argv);
 	if (i == 0 && argc != 2)
 		exit_with_err();
