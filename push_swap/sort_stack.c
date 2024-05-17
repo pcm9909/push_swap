@@ -3,28 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chunpark <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 18:02:33 by chunpark          #+#    #+#             */
-/*   Updated: 2024/05/15 18:05:38 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/05/17 05:20:28 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
 
-int	chunk_rotate(t_stack *deque, int chunk_value)
+int	chunk_rotate(t_stack *stack, int chunk_value)
 {
 	t_node	*p;
 	int		i;
 
 	i = 0;
-	p = deque->head;
+	p = stack->head;
 	while (p->idx > chunk_value)
 	{
 		p = p->next;
 		i++;
 	}
-	if (i <= deque->size / 2)
+	if (i <= stack->size / 2)
 		return (1);
 	return (-1);
 }

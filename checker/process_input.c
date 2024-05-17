@@ -1,34 +1,48 @@
 #include "./includes/checker.h"
 
-void	execute_command(char *str, t_stack *a, t_stack *b)
+void	execute_command_1(char *str, t_stack *a, t_stack *b)
 {
 	if (ft_strcmp(str, "sa\n") == 0)
-		sa(a);
+		swap(a);
 	else if (ft_strcmp(str, "sb\n") == 0)
-		sb(b);
+		swap(b);
 	else if (ft_strcmp(str, "ss\n") == 0)
-		ss(a, b);
+    {
+		swap(a);
+        swap(b);
+    }
 	else if (ft_strcmp(str, "pa\n") == 0)
-		pa(a, b);
+		push(a, b);
 	else if (ft_strcmp(str, "pb\n") == 0)
-		pb(a, b);
+		push(b, a);
 	else if (ft_strcmp(str, "ra\n") == 0)
-		ra(a);
+		rotate(a);
 	else if (ft_strcmp(str, "rb\n") == 0)
-		rb(b);
+		rotate(b);
 	else if (ft_strcmp(str, "rr\n") == 0)
-		rr(a, b);
-	else if (ft_strcmp(str, "rra\n") == 0)
-		rra(a);
-	else if (ft_strcmp(str, "rrb\n") == 0)
-		rrb(b);
-	else if (ft_strcmp(str, "rrr\n") == 0)
-		rrr(a, b);
-	else
-		exit_with_err();
+    {
+        rotate(a);
+        rotate(b);
+    }
+    else
+        execute_command_2(str, a, b);
 }
 
-void	process_command(t_stack *a, t_stack *b, int size)
+void execute_command_2(char *str, t_stack *a, t_stack *b)
+{
+    if (ft_strcmp(str, "rra\n") == 0)
+        reverse_rotate(a);
+    else if (ft_strcmp(str, "rrb\n") == 0)
+        reverse_rotate(b);
+    else if (ft_strcmp(str, "rrr\n") == 0)
+    {
+        reverse_rotate(a);
+        reverse_rotate(b);
+    }
+    else exit_with_err();
+}
+
+    void process_command(t_stack *a, t_stack *b, int size)
 {
 	char	*str;
 
@@ -43,7 +57,7 @@ void	process_command(t_stack *a, t_stack *b, int size)
 				ft_putstr_fd("KO\n", 1);
 			return ;
 		}
-		execute_command(str, a, b);
+		execute_command_1(str, a, b);
 		free(str);
 	}
 }

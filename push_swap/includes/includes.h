@@ -3,33 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   includes.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chunpark <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 20:14:16 by chunpark          #+#    #+#             */
-/*   Updated: 2024/05/15 20:28:48 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/05/17 05:53:09 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INCLUDES_H
-# define INCLUDES_H
+#pragma once
 
-# include <stdlib.h>
-# include <unistd.h>
-# include "../utils/libft/libft.h"
-
-typedef struct s_node
-{
-	struct s_node	*prev;
-	int				data;
-	int				idx;
-	struct s_node	*next;
-}				t_node;
-
-typedef struct s_stack
-{
-	int		size;
-	t_node	*head;
-	t_node	*tail;
-}				t_stack;
-
-#endif
+#include <stdlib.h>
+#include <unistd.h>
+#include "../../utils/struct.h"
+#include "../../utils/utils.h"
+#include "../../utils/func/func.h"
+#include "../../utils/utils/libft/libft.h"

@@ -6,7 +6,7 @@
 /*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 20:28:04 by chunpark          #+#    #+#             */
-/*   Updated: 2024/05/16 23:51:38 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/05/17 04:44:20 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,6 @@ static void	validate_args(int argc, char **argv)
 			exit_with_err();
 		i++;
 	}
-}
-
-static void	process_stack(t_stack *a, char **argv)
-{
-	int	*arr;
-	int	sorted;
-
-	insert(a, argv);
-	arr = preprecess_stack(a, a->size);
-	merge_sort(arr, 0, a->size - 1);
-	indexing_node(a, arr);
-	free(arr);
 }
 
 static void	free_resources(t_stack *a, t_stack *b, char **argv, int i)
@@ -71,7 +59,7 @@ int	main(int argc, char **argv)
 	validate_args(argc, argv);
 	a = init_stack();
 	b = init_stack();
-	process_stack(a, argv);
+	insert(a, argv);
 	size = a->size;
 	process_command(a, b, size);
 	free_resources(a, b, argv, i);
