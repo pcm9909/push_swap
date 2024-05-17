@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef FUNC_H
+# define FUNC_H
 
 # include "../utils.h"
 
@@ -32,3 +33,5 @@ void	reverse_rotate(t_stack *stack);
 void	rra(t_stack *a);
 void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
+
+#endif

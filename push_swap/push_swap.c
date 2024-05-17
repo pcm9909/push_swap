@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chunpark <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 17:43:00 by chunpark          #+#    #+#             */
-/*   Updated: 2024/05/15 18:23:31 by chunpark         ###   ########.fr       */
+/*   Updated: 2024/05/17 17:03:09 by chunpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
 
-static void	validate_args(int argc, char **argv)
+void	validate_args(char **argv)
 {
 	int	i;
 
@@ -25,7 +25,7 @@ static void	validate_args(int argc, char **argv)
 	}
 }
 
-static void	process_stack(t_stack *a, char **argv)
+void	process_stack(t_stack *a, char **argv)
 {
 	int	*arr;
 
@@ -37,7 +37,7 @@ static void	process_stack(t_stack *a, char **argv)
 	free(arr);
 }
 
-static void	sort_stack(t_stack *a, t_stack *b)
+void	sort_stack(t_stack *a, t_stack *b)
 {
 	if (a->size == 3)
 		sort_3(a);
@@ -47,7 +47,7 @@ static void	sort_stack(t_stack *a, t_stack *b)
 	b_to_a(a, b);
 }
 
-static void	free_resources(t_stack *a, t_stack *b, char **argv, int i)
+void	free_resources(t_stack *a, t_stack *b, char **argv, int i)
 {
 	if (i == 0)
 	{
@@ -75,7 +75,7 @@ int	main(int argc, char **argv)
 	i = update_args(&argv);
 	if (i == 0 && argc != 2)
 		exit_with_err();
-	validate_args(argc, argv);
+	validate_args(argv);
 	a = init_stack();
 	b = init_stack();
 	process_stack(a, argv);

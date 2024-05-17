@@ -10,11 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef INCLUDES_H
+# define INCLUDES_H
 
-#include <stdlib.h>
-#include <unistd.h>
-#include "../../utils/struct.h"
-#include "../../utils/utils.h"
-#include "../../utils/func/func.h"
-#include "../../utils/utils/libft/libft.h"
+# include <stdlib.h>
+# include <unistd.h>
+# include "../../utils/struct.h"
+# include "../../utils/utils.h"
+# include "../../utils/func/func.h"
+# include "../../utils/utils/libft/libft.h"
+
+#endif

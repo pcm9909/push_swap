@@ -17,7 +17,7 @@
 
 //process_input.c
 void	execute_command_1(char *str, t_stack *a, t_stack *b);
-void    execute_command_2(char *str, t_stack *a, t_stack *b);
+void	execute_command_2(char *str, t_stack *a, t_stack *b);
 void	process_command(t_stack *a, t_stack *b, int size);
 
 #endif
