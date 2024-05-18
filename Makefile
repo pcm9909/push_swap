@@ -6,12 +6,13 @@
 #    By: chunpark <chunpark@student.42gyeongsan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/17 19:09:54 by chunpark          #+#    #+#              #
-#    Updated: 2024/05/17 20:27:22 by chunpark         ###   ########.fr        #
+#    Updated: 2024/05/18 16:37:11 by chunpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+
 
 NAME = push_swap
 DIR = ./man
@@ -48,15 +49,18 @@ all: spinner $(NAME)
 
 $(NAME): $(PUSH_SWAP_OBJS)
 	@make re -C ./utils/utils/libft > /dev/null
-	@$(CC) $(CFLAGS) $(PUSH_SWAP_OBJS) $(LIBFT) -o $(NAME)
-bonus: $(BNS_NAME)
+	@$(CC) $(CFLAGS) $(PUSH_SWAP_OBJS) $(LIBFT) -o $(NAME) -g -fsanitize=address
+	@echo OK!
+
+bonus: spinner $(BNS_NAME)
 
 $(BNS_NAME): $(CHECKER_OBJS)
 	@make re -C ./utils/utils/libft > /dev/null
 	@make re -C ./utils/utils/get_next_line > /dev/null
-	@$(CC) $(CFLAGS) $(CHECKER_OBJS) $(LIBFT) $(GNL) -o $(BNS_NAME)
+	@$(CC) $(CFLAGS) $(CHECKER_OBJS) $(LIBFT) $(GNL) -o $(BNS_NAME) -g -fsanitize=address
+	@echo OK!
 
-clean:
+clean: spinner
 	@make clean -C ./utils/utils/libft > /dev/null
 	@make clean -C ./utils/utils/get_next_line > /dev/null
 	@rm -f $(PUSH_SWAP_OBJS) $(CHECKER_OBJS)
@@ -66,9 +70,11 @@ fclean: clean
 	@make fclean -C ./utils/utils/get_next_line > /dev/null
 	@rm -f $(NAME) $(BNS_NAME)
 
-re: fclean all
+re: spinner fclean all
 
-re_bonus: fclean bonus
+re_bonus: spinner fclean bonus
 
 spinner :
 	@bash a.sh
+
+.PHONY: all bonus clean fclean re re_bonus spinner

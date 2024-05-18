@@ -12,4 +12,3 @@ do
     j=$(($j+1))
 done
 clear
-printf "OK!\n"
