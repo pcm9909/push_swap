@@ -193,13 +193,15 @@ void	reverse_rotate(t_stack *stack)
 3. merge sort
 4. radix sort
 5. greedy
-   +등등
+6. 이외 많은 알고리즘 
 
 ​
 
 모래시계 sort는 push_swap에만 적용되는 sorting 방식이다
 
 sorting을 공부하고 싶다면 다른 sorting 알고리즘을 선택하는 것을 추천한다 
+
+
 
 평가에 숫자 100개의 값이 700번 이하로 숫자 500개의 값이 5500번 이하로 정렬되어야 100점을 받을 수 있다 
 
