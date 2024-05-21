@@ -193,8 +193,7 @@ void	reverse_rotate(t_stack *stack)
 3. merge sort
 4. radix sort
 5. greedy
-
-등등
+   +등등
 
 ​
 
