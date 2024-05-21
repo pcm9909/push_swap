@@ -1,14 +1,14 @@
 * push_swap
 
 ## 목차
-[컴파일](#1.-컴파일)
+[Compile](#1.-Compile)
 
-과제 소개
+[과제 소개](#2.-과제-소개)
 
 func
 
-## 1. 컴파일
-컴파일
+## 1. Compile
+Compile
 ```
 make
 make bonus
