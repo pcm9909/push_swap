@@ -29,7 +29,7 @@ value example >
 
 PDF에서 명시된 stack은 우리가 알고 있는 일반적인 stack과 다르다 
 
-stack이라 함은 아래 사진과 같이 최상단(head)에서 삽입(push)과  삭제(pop)이 일어난다
+stack이라 함은 최상단(head)에서 삽입(push)과  삭제(pop)이 일어난다
 
 하지만 과제에서 명시된 stack은 rotate, swap 등 최하단(tail)의 값, 최상단(head)의 다음 값도 조작이 가능하다
 
@@ -200,6 +200,7 @@ void	reverse_rotate(t_stack *stack)
 모래시계 sort는 push_swap에만 적용되는 sorting 방식이다
 
 sorting을 공부하고 싶다면 다른 sorting 알고리즘을 선택하는 것을 추천한다 
+
 
 
 
