@@ -7,6 +7,7 @@
 
 [func](#3.-func)
 
+[tip](#4.-tip)
 ## 1. Compile
 Compile
 ```
@@ -101,3 +102,118 @@ typedef struct s_stack
 4. reverse_rotate
 
 push(pa, pb) : 스택의 최상단(head) 값을 대상 stack의 최상단(head)으로 삽입한다
+```
+void	push(t_stack *dst, t_stack *src)
+{
+	t_node	*tmp;
+
+	if (!src->head)
+		return ;
+	tmp = src->head;
+	src->head = src->head->next;
+	if (src->head)
+		src->head->prev = NULL;
+	dst->size++;
+	src->size--;
+	if (!dst->head)
+	{
+		dst->head = tmp;
+		dst->tail = tmp;
+		tmp->next = NULL;
+	}
+	else
+	{
+		tmp->next = dst->head;
+		dst->head->prev = tmp;
+		dst->head = tmp;
+	}
+}
+```
+
+swap(sa, sb) : 스택에 최상단(head)의 값과 그다음 값을 바꾼다. 
+```
+void	swap(t_stack *stack)
+{
+	t_node	*tmp;
+
+	if (!stack->head || !stack->head->next)
+		return ;
+	tmp = stack->head;
+	stack->head = stack->head->next;
+	stack->head->prev = NULL;
+	tmp->prev = stack->head;
+	tmp->next = stack->head->next;
+	stack->head->next = tmp;
+	if (tmp->next)
+		tmp->next->prev = tmp;
+}
+```
+
+rotate(ra, rb, rr) : 최상단(head)의 값을 최하단(tail)으로 보낸다
+```
+void	rotate(t_stack *stack)
+{
+	t_node	*tmp;
+
+	if (!stack->head || !stack->head->next)
+		return ;
+	tmp = stack->head;
+	stack->head = stack->head->next;
+	stack->head->prev = NULL;
+	stack->tail->next = tmp;
+	tmp->prev = stack->tail;
+	stack->tail = tmp;
+	tmp->next = NULL;
+}
+```
+
+reverse_rotate(rra, rrb, rrr) : rotate의 반대로 최하단(tail)의 값을 최상단(head)로 보낸다
+```
+void	reverse_rotate(t_stack *stack)
+{
+	t_node	*tmp;
+
+	if (!stack->head || !stack->head->next)
+		return ;
+	tmp = stack->tail;
+	stack->tail = stack->tail->prev;
+	stack->tail->next = NULL;
+	tmp->prev = NULL;
+	tmp->next = stack->head;
+	stack->head->prev = tmp;
+	stack->head = tmp;
+}
+```
+
+## 4. tip
+알고리즘은 입맛에 맞는 것을 선택하면 된다
+
+1. 모래시계 sort 
+2. quick sort
+3. merge sort
+4. radix sort
+5. greedy
+
+등등
+
+​
+
+모래시계 sort는 push_swap에만 적용되는 sorting 방식이다
+
+sorting을 공부하고 싶다면 다른 sorting 알고리즘을 선택하는 것을 추천한다 
+
+평가에 숫자 100개의 값이 700번 이하로 숫자 500개의 값이 5500번 이하로 정렬되어야 100점을 받을 수 있다 
+
+직접 값을 넣기는 무리가 있으니 아래 명령어를 사용하는 것을 추천한다 
+
+랜덤 값을 생성해 환경 변수에 저장하고 실행시켜준다 
+```
+RG=$(seq 10000 | shuf -n [숫자 갯수] | sort -uR | tr '\n' ' ' | sed 's/ $//'); [실행 파일 이름] $RG
+
+예시
+RG=$(seq 10000 | shuf -n 5 | sort -uR | tr '\n' ' ' | sed 's/ $//'); ./a.out $RG
+정렬 확인
+RG=$(seq 10000 | shuf -n 5 | sort -uR | tr '\n' ' ' | sed 's/ $//'); ./a.out $RG | ./checker_linux $RG
+명령 횟수 확인
+RG=$(seq 10000 | shuf -n 5 | sort -uR | tr '\n' ' ' | sed 's/ $//'); ./a.out $RG | wc -l
+```
