@@ -1,4 +1,4 @@
-* push_swap
+# push_swap
 
 ## 목차
 [Compile](#1.-Compile)
